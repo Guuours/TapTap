@@ -10,12 +10,12 @@ io.on('connection', socket => {
     socket.on('tap', msg => {
         if (!haveWinner) {
             haveWinner = true;
-            console.log('>>: ' + msg);
+            console.log('>> ' + msg);
             socket.broadcast.emit("tapped", msg);
         }
     });
     socket.on('reset', msg => {
-        console.log('>>: reset');
+        console.log('>> reset');
         haveWinner = false;
     });
 });
