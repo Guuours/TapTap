@@ -11,7 +11,7 @@ io.on('connection', socket => {
         if (!haveWinner) {
             haveWinner = true;
             console.log('>> ' + msg);
-            socket.broadcast.emit("tapped", msg);
+            socket.broadcast.emit('tapped', msg);
         }
     });
     socket.on('reset', msg => {
@@ -30,5 +30,16 @@ app.get('/:color', (req, res) => {
     res.sendFile(path.join(__dirname + '/static/' + req.params.color + '.html'));
 });
 
+app.get('/old/:color', (req, res) => {
+    res.sendFile(path.join(__dirname + '/static/old/' + req.params.color + '.html'));
+});
+
+app.get('/tap/:color', (req, res) => {
+    haveWinner = true;
+    console.log('>> ' + req.params.color);
+    io.emit('tapped', req.params.color);
+    res.send();
+});
+
 // start listening
-http.listen(5000);
+http.listen(80);
