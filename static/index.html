@@ -5,6 +5,7 @@
     <script src="/jquery-3.4.0.min.js"></script>
     <script>
         var socket = io();
+        var ring;
 
         function reset() {
             socket.emit('reset');
@@ -12,8 +13,10 @@
         }
 
         $(() => {
+            ring = document.getElementById("ring");
             socket.on('tapped', msg => {
                 $('#' + msg).show();
+                ring.play();
             });
         });
     </script>
@@ -33,6 +36,10 @@
             </td>
         </tr>
     </table>
+    <audio id="ring">
+        <source src="/ring.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+      </audio>
 </body>
 
 </html>
