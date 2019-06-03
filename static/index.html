@@ -12,9 +12,9 @@
             $('img').hide();
         }
 
-        $(() => {
+        $(function () {
             ring = document.getElementById("ring");
-            socket.on('tapped', msg => {
+            socket.on('tapped', function (msg) {
                 $('#' + msg).show();
                 ring.play();
             });
@@ -38,8 +38,8 @@
     </table>
     <audio id="ring">
         <source src="/ring.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-      </audio>
+        Your browser does not support the audio element.
+    </audio>
 </body>
 
 </html>

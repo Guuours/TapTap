@@ -36,8 +36,8 @@
     <script src="/jquery-3.4.0.min.js"></script>
     <script>
         var socket = io();
-        $(() => {
-            $('#btn').click(() => {
+        $(function () {
+            $('#btn').click(function () {
                 socket.emit('tap', 'blue');
             });
         });
